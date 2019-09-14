@@ -13,9 +13,7 @@ export default (initialIdeasList, initialDateSort = "LATEST") => {
 
     //add new idea
     const saveNewIdea = (idea) => {
-        const newIdeas = ideas.concat(idea);
-        newIdeas.sort(compareIdeas);
-        setIdeas(newIdeas);
+        setIdeas([idea, ...ideas].sort(compareIdeas));
     };
 
     //update existing idea
@@ -40,8 +38,7 @@ export default (initialIdeasList, initialDateSort = "LATEST") => {
     useEffect(() => {
             const newIdeas = ideas.sort(compareIdeas);
             setIdeas(newIdeas);
-        }
-        , [dateSort]);
+    }, [dateSort]);
 
     return {ideas, saveNewIdea, updateIdea, deleteIdea, dateSort, changeOrder};
 };

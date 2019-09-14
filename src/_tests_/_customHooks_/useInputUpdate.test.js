@@ -1,8 +1,13 @@
 import React from "react";
 import useInputUpdate from "../../components/_customHooks_/useInputUpdate";
 import {act, renderHook} from "@testing-library/react-hooks";
+import {cleanup} from "@testing-library/react";
 
 describe("test useInputUpdate hook", () => {
+
+    afterEach(() => {
+        cleanup();
+    });
 
     it("it renders default value", () => {
         const {result} = renderHook(() => useInputUpdate("initialValue"));
@@ -27,4 +32,6 @@ describe("test useInputUpdate hook", () => {
         expect(result.current.value).toEqual("");
 
     });
+
+
 });

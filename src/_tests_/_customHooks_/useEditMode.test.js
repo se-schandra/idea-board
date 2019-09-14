@@ -1,8 +1,14 @@
 import React from "react";
 import {act, renderHook} from "@testing-library/react-hooks";
 import useEditMode from "../../components/_customHooks_/useEditMode";
+import {cleanup} from "@testing-library/react";
 
 describe("test useEditMode hook", () => {
+
+    afterEach(() => {
+        cleanup();
+    });
+
     it("it renders default value", () => {
         const {result} = renderHook(() => useEditMode(false));
         expect(result.current.isEditing).toEqual(false);
