@@ -18,8 +18,7 @@ export default (initialIdeasList, initialDateSort = "LATEST") => {
 
     //update existing idea
     const updateIdea = (ideaIndex, newIdea) => {
-        const newIdeas = ideas.map((idea, index) => index === ideaIndex ? newIdea : idea);
-        newIdeas.sort(compareIdeas);
+        const newIdeas = ideas.map((idea, index) => index === ideaIndex ? newIdea : idea).sort(compareIdeas);
         setIdeas(newIdeas);
     };
 
@@ -36,8 +35,7 @@ export default (initialIdeasList, initialDateSort = "LATEST") => {
 
     //on sort change reorder ideas
     useEffect(() => {
-            const newIdeas = ideas.sort(compareIdeas);
-            setIdeas(newIdeas);
+        setIdeas([...ideas].sort(compareIdeas));
     }, [dateSort]);
 
     return {ideas, saveNewIdea, updateIdea, deleteIdea, dateSort, changeOrder};
