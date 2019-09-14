@@ -32,9 +32,9 @@ const IdeaForm = ({idea, saveIdea, closeForm}) => {
 
     return (
         <form role="idea-form" onSubmit={addIdea}>
-            <input placeholder="Add a title" defaultValue={title.value}
+            <input placeholder="Title" defaultValue={title.value}
                    ref={titleRef} required/>
-            <textarea placeholder="Add a description"
+            <textarea placeholder="Description"
                       defaultValue={description.value} required
                       ref={descriptionRef} maxLength="140"/>
             <button type="submit">Save</button>
