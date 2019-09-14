@@ -31,7 +31,7 @@ const IdeaForm = ({idea, saveIdea, closeForm}) => {
     }, []);
 
     return (
-        <form onSubmit={addIdea}>
+        <form role="idea-form" onSubmit={addIdea}>
             <input placeholder="Add a title" defaultValue={title.value}
                    ref={titleRef} required/>
             <textarea placeholder="Add a description"

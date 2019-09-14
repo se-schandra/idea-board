@@ -5,20 +5,16 @@ import IdeaForm from "./IdeaForm";
 const SavedIdea = ({idea, updateIdea, deleteIdea}) => {
     const {isEditing, enableEditing, disableEditing} = useEditMode(false);
 
-    const formatDate = (date) => {
-        return date.toLocaleString("en-GB");
-    };
-
     return (
         <section>
             {
                 !isEditing ?
-                    <div>
+                    <div role="saved-idea">
                         <summary>{idea.title}</summary>
                         <p>{idea.description}</p>
-                        <em>Last Updated: {formatDate(idea.lastUpdate)}</em>
-                        <button onClick={deleteIdea}>Delete</button>
-                        <button onClick={enableEditing}>Edit</button>
+                        <em>Last Updated: {idea.lastUpdate.toLocaleString("en-GB")}</em>
+                        <button role="delete-idea" onClick={deleteIdea}>Delete</button>
+                        <button role="edit-idea" onClick={enableEditing}>Edit</button>
                     </div>
                     : <IdeaForm idea={idea} saveIdea={updateIdea}
                                 closeForm={disableEditing}/>
