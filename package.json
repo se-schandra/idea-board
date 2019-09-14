@@ -1,0 +1,28 @@
+{
+  "name": "clearscore-fed-test",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.1.0",
+    "@testing-library/react": "^9.1.4",
+    "@testing-library/react-hooks": "^2.0.1",
+    "enzyme": "^3.10.0",
+    "eslint": "^5.16.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  }
+}
