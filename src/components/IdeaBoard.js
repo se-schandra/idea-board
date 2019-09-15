@@ -28,7 +28,7 @@ const IdeaBoard = () => {
                     {ideas.map((idea, index) => {
                         return <SavedIdea key={index}
                                           idea={idea}
-                                          save={updateIdea.bind(this, index)}
+                                          updateIdea={updateIdea.bind(this, index)}
                                           deleteIdea={deleteIdea.bind(this, index)}
                         />;
                     })}

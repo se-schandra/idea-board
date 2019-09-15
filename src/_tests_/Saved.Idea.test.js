@@ -3,7 +3,6 @@ import {cleanup, fireEvent, render} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import SavedIdea from "../components/SavedIdea";
 
-
 describe("SavedIdea renders new idea elements", () => {
     const now = new Date();
     const idea = {
@@ -11,14 +10,17 @@ describe("SavedIdea renders new idea elements", () => {
         description: "description of idea",
         lastUpdate: now
     };
-
+    const updateIdea = jest.fn(() => {
+    });
+    const deleteIdea = jest.fn(() => {
+    });
 
     afterEach(() => {
         cleanup();
     });
 
     it("renders without crashing", () => {
-        render(<SavedIdea idea={idea}/>);
+        render(<SavedIdea idea={idea} updateIdea={updateIdea} deleteIdea={deleteIdea}/>);
 
         const section = document.querySelector("section");
         expect(section).toBeInTheDocument();
@@ -27,7 +29,7 @@ describe("SavedIdea renders new idea elements", () => {
 
     it("by default Saved idea displays idea details", () => {
 
-        const {queryByRole} = render(<SavedIdea idea={idea}/>);
+        const {queryByRole} = render(<SavedIdea idea={idea} updateIdea={updateIdea} deleteIdea={deleteIdea}/>);
         const container = queryByRole("saved-idea");
         expect(container).toBeInTheDocument();
         expect(container.children.length).toBe(5);
@@ -40,7 +42,7 @@ describe("SavedIdea renders new idea elements", () => {
     });
 
     it("Edit mode can be enabled by Edit button", () => {
-        const {queryByRole} = render(<SavedIdea idea={idea}/>);
+        const {queryByRole} = render(<SavedIdea idea={idea} updateIdea={updateIdea} deleteIdea={deleteIdea}/>);
         const editButton = queryByRole("edit-idea");
         fireEvent.click(editButton);
         expect(queryByRole("idea-form")).toBeInTheDocument();
@@ -48,10 +50,9 @@ describe("SavedIdea renders new idea elements", () => {
     });
 
     it("Delete button unmount the Saved Idea", () => {
-        const {queryByRole} = render(<SavedIdea idea={idea}/>);
-        const deleteIdea = queryByRole("delete-idea");
-        fireEvent.click(deleteIdea);
+        const {queryByRole} = render(<SavedIdea idea={idea} updateIdea={updateIdea} deleteIdea={deleteIdea}/>);
+        const deleteIdeaBtn = queryByRole("delete-idea");
+        fireEvent.click(deleteIdeaBtn);
         expect(document.body).toContainHTML("");
-
     });
 });

@@ -5,11 +5,6 @@ const useInputUpdate = (initialValue) => {
 
     function handleOnChange(e) {
         const inputValue = e.target.value;
-
-        if (!inputValue || inputValue.length === 0) {
-            //TODO show error next to field
-        }
-
         setValue(inputValue);
     }
 

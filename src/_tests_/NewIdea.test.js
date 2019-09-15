@@ -6,12 +6,15 @@ import NewIdea from "../components/NewIdea";
 
 describe("New Idea renders new idea elements", () => {
 
+    const saveNewIdea = jest.fn(() => {
+    });
+
     afterEach(() => {
         cleanup();
     });
 
     it("renders without crashing", () => {
-        const {getByTestId} = render(<NewIdea/>);
+        const {getByTestId} = render(<NewIdea saveNewIdea={saveNewIdea}/>);
 
         const container = getByTestId("new-idea-container");
         expect(container).toBeInTheDocument();
@@ -20,7 +23,7 @@ describe("New Idea renders new idea elements", () => {
     });
 
     it("add new button has on click handler enables editing", () => {
-        const {getByTestId, queryByRole} = render(<NewIdea/>);
+        const {getByTestId, queryByRole} = render(<NewIdea saveNewIdea={saveNewIdea}/>);
 
         const addNewIdea = getByTestId("cta-add-new");
         fireEvent.click(addNewIdea);
@@ -31,7 +34,7 @@ describe("New Idea renders new idea elements", () => {
     });
 
     it("Cancel form button stops editing", () => {
-        const {getByTestId, getByText, queryByRole} = render(<NewIdea/>);
+        const {getByTestId, getByText, queryByRole} = render(<NewIdea saveNewIdea={saveNewIdea}/>);
 
         fireEvent.click(getByTestId("cta-add-new"));
         fireEvent.click(getByText("Cancel"));

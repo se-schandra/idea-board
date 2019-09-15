@@ -1,6 +1,7 @@
 import React from "react";
 import useEditMode from "./_customHooks_/useEditMode";
 import IdeaForm from "./IdeaForm";
+import PropTypes from "prop-types";
 
 const SavedIdea = ({idea, updateIdea, deleteIdea}) => {
     const {isEditing, enableEditing, disableEditing} = useEditMode(false);
@@ -24,4 +25,13 @@ const SavedIdea = ({idea, updateIdea, deleteIdea}) => {
     );
 };
 
+SavedIdea.propTypes = {
+    idea: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        lastUpdate: PropTypes.instanceOf(Date).isRequired,
+    }).isRequired,
+    updateIdea: PropTypes.func.isRequired,
+    deleteIdea: PropTypes.func.isRequired
+};
 export default SavedIdea;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import useEditMode from "./_customHooks_/useEditMode";
 import IdeaForm from "./IdeaForm";
 
@@ -17,6 +18,10 @@ const NewIdea = ({saveNewIdea}) => {
         </div>
     )
 
+};
+
+NewIdea.propTypes = {
+    saveNewIdea: PropTypes.func.isRequired
 };
 
 export default NewIdea;

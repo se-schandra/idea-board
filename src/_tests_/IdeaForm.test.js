@@ -27,7 +27,7 @@ describe("IdeaForm renders idea details in form", () => {
     });
 
     it("renders without crashing", () => {
-        render(<IdeaForm/>);
+        render(<IdeaForm saveIdea={saveIdea} closeForm={closeForm}/>);
 
         const formSelector = document.querySelector("form");
         expect(formSelector).toBeInTheDocument();
@@ -49,8 +49,8 @@ describe("IdeaForm renders idea details in form", () => {
 
     it("renders blank form when idea is undefined", () => {
         const {getByText} = render(<IdeaForm saveIdea={saveIdea} closeForm={closeForm}/>);
-        expect(document.querySelector('input')).toHaveTextContent("");
-        expect(document.querySelector('textarea')).toHaveTextContent("");
+        expect(document.querySelector("input")).toHaveTextContent("");
+        expect(document.querySelector("textarea")).toHaveTextContent("");
         expect(getByText("Save")).toBeInTheDocument();
         expect(getByText("Cancel")).toBeInTheDocument();
 
@@ -58,8 +58,8 @@ describe("IdeaForm renders idea details in form", () => {
 
     it("renders idea details when idea is defined", () => {
         const {getByText} = render(<IdeaForm idea={idea} saveIdea={saveIdea} closeForm={closeForm}/>);
-        expect(document.querySelector('input')).toHaveValue("an idea");
-        expect(document.querySelector('textarea')).toHaveValue("description of idea");
+        expect(document.querySelector("input")).toHaveValue("an idea");
+        expect(document.querySelector("textarea")).toHaveValue("description of idea");
         expect(getByText("Save")).toBeInTheDocument();
         expect(getByText("Cancel")).toBeInTheDocument();
     });
@@ -67,7 +67,7 @@ describe("IdeaForm renders idea details in form", () => {
     it("Calls saveidea function is called with updated details when Save button is clicked", () => {
         const {getByText} = render(<IdeaForm idea={idea} saveIdea={saveIdea} closeForm={closeForm}/>);
 
-        fireEvent.change(document.querySelector('input'), {target: {value: "changed title"}});
+        fireEvent.change(document.querySelector("input"), {target: {value: "changed title"}});
         fireEvent.click(getByText("Save"));
 
         expect(saveIdea).toHaveBeenCalled();
@@ -76,7 +76,7 @@ describe("IdeaForm renders idea details in form", () => {
         expect(saveIdeaArg.description).toEqual("description of idea");
         expect(closeForm).toHaveBeenCalled();
 
-        expect(document.body).toContainHTML('');
+        expect(document.body).toContainHTML("");
     });
 
     it("Unmounts the form when Cancel button is clicked", () => {
@@ -84,7 +84,7 @@ describe("IdeaForm renders idea details in form", () => {
         fireEvent.click(getByText("Cancel"));
         expect(closeForm).toHaveBeenCalledTimes(1);
 
-        expect(document.body).toContainHTML('');
+        expect(document.body).toContainHTML("");
     });
 
 
