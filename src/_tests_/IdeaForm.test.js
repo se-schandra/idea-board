@@ -32,7 +32,6 @@ describe("IdeaForm renders idea details in form", () => {
         const formSelector = document.querySelector("form");
         expect(formSelector).toBeInTheDocument();
         expect(formSelector.children.length).toBe(4);
-        expect(formSelector).toHaveAttribute("role", "idea-form");
 
         const input = document.querySelector("input");
         expect(input).toBeInTheDocument();

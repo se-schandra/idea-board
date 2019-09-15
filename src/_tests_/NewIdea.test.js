@@ -23,24 +23,24 @@ describe("New Idea renders new idea elements", () => {
     });
 
     it("add new button has on click handler enables editing", () => {
-        const {getByTestId, queryByRole} = render(<NewIdea saveNewIdea={saveNewIdea}/>);
+        const {getByTestId} = render(<NewIdea saveNewIdea={saveNewIdea}/>);
 
         const addNewIdea = getByTestId("cta-add-new");
         fireEvent.click(addNewIdea);
 
         expect(addNewIdea).not.toBeInTheDocument();
         expect(getByTestId("new-idea-container").children.length).toBe(1);
-        expect(queryByRole("idea-form")).toBeInTheDocument();
+        expect(getByTestId("idea-form")).toBeInTheDocument();
     });
 
     it("Cancel form button stops editing", () => {
-        const {getByTestId, getByText, queryByRole} = render(<NewIdea saveNewIdea={saveNewIdea}/>);
+        const {getByTestId, getByText, queryByTestId} = render(<NewIdea saveNewIdea={saveNewIdea}/>);
 
         fireEvent.click(getByTestId("cta-add-new"));
         fireEvent.click(getByText("Cancel"));
 
         expect(getByTestId("new-idea-container").children.length).toBe(1);
-        expect(queryByRole("idea-form")).not.toBeInTheDocument();
+        expect(queryByTestId("idea-form")).not.toBeTruthy();
 
         expect(getByTestId("cta-add-new")).toBeInTheDocument();
 

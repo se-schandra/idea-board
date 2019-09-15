@@ -29,8 +29,8 @@ describe("SavedIdea renders new idea elements", () => {
 
     it("by default Saved idea displays idea details", () => {
 
-        const {queryByRole} = render(<SavedIdea idea={idea} updateIdea={updateIdea} deleteIdea={deleteIdea}/>);
-        const container = queryByRole("saved-idea");
+        const {getByTestId} = render(<SavedIdea idea={idea} updateIdea={updateIdea} deleteIdea={deleteIdea}/>);
+        const container = getByTestId("saved-idea");
         expect(container).toBeInTheDocument();
         expect(container.children.length).toBe(5);
 
@@ -42,16 +42,16 @@ describe("SavedIdea renders new idea elements", () => {
     });
 
     it("Edit mode can be enabled by Edit button", () => {
-        const {queryByRole} = render(<SavedIdea idea={idea} updateIdea={updateIdea} deleteIdea={deleteIdea}/>);
-        const editButton = queryByRole("edit-idea");
+        const {getByTestId} = render(<SavedIdea idea={idea} updateIdea={updateIdea} deleteIdea={deleteIdea}/>);
+        const editButton = getByTestId("edit-idea");
         fireEvent.click(editButton);
-        expect(queryByRole("idea-form")).toBeInTheDocument();
+        expect(getByTestId("idea-form")).toBeInTheDocument();
 
     });
 
     it("Delete button unmount the Saved Idea", () => {
-        const {queryByRole} = render(<SavedIdea idea={idea} updateIdea={updateIdea} deleteIdea={deleteIdea}/>);
-        const deleteIdeaBtn = queryByRole("delete-idea");
+        const {getByTestId} = render(<SavedIdea idea={idea} updateIdea={updateIdea} deleteIdea={deleteIdea}/>);
+        const deleteIdeaBtn = getByTestId("delete-idea");
         fireEvent.click(deleteIdeaBtn);
         expect(document.body).toContainHTML("");
     });

@@ -16,12 +16,12 @@ const SavedIdea = ({idea, updateIdea, deleteIdea}) => {
         <section>
             {
                 !isEditing ?
-                    <div role="saved-idea">
+                    <div data-testid="saved-idea">
                         <summary>{idea.title}</summary>
                         <p>{idea.description}</p>
                         <em>Last Updated: {idea.lastUpdate.toLocaleString("en-GB")}</em>
-                        <button role="delete-idea" onClick={deleteIdea}>Delete</button>
-                        <button role="edit-idea" onClick={enableEditing}>Edit</button>
+                        <button data-testid="delete-idea" onClick={deleteIdea}>Delete</button>
+                        <button data-testid="edit-idea" onClick={enableEditing}>Edit</button>
                     </div>
                     : <IdeaForm idea={idea} saveIdea={updateIdea}
                                 closeForm={disableEditing}/>
