@@ -1,6 +1,12 @@
 import {useEffect, useState} from "react";
 
-export default (initialIdeasList, initialDateSort = "LATEST") => {
+/**
+ * Custom hook to manage content and sorting ideas list on ideas board
+ * @param initialIdeasList
+ * @param initialDateSort
+ * @returns {{ideas: any | (), saveNewIdea: saveNewIdea, updateIdea: updateIdea, deleteIdea: deleteIdea, dateSort: (string|()), changeOrder: changeOrder}}
+ */
+const useIdeaState = (initialIdeasList, initialDateSort = "LATEST") => {
 
     const [ideas, setIdeas] = useState(initialIdeasList);
     const [dateSort, setDateSort] = useState(initialDateSort);
@@ -40,3 +46,5 @@ export default (initialIdeasList, initialDateSort = "LATEST") => {
 
     return {ideas, saveNewIdea, updateIdea, deleteIdea, dateSort, changeOrder};
 };
+
+export default useIdeaState;

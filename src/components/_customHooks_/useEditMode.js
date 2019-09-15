@@ -1,6 +1,12 @@
 import {useState} from "react";
 
-export default (initialValue) => {
+/**
+ * Custom hook toggle edit mode of component
+ * @param initialValue value of edit mode
+ * @returns {{isEditing: any | (), enableEditing: enableEditing, disableEditing: disableEditing}}
+ */
+
+const useEditMode = (initialValue) => {
     const [isEditing, setEdit] = useState(initialValue);
 
     const disableEditing = () => {
@@ -14,4 +20,6 @@ export default (initialValue) => {
     return {
         isEditing, enableEditing, disableEditing
     }
-}
+};
+
+export default useEditMode;

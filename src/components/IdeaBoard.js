@@ -3,6 +3,9 @@ import useIdeaState from "./_customHooks_/useIdeaState";
 import NewIdea from "./NewIdea";
 import SavedIdea from "./SavedIdea";
 
+/**
+ * IdeaBoard allows users to add new ideas and view saved idea. By default ideas list is empty.
+ */
 const IdeaBoard = () => {
     // Set the list of ideas to an empty array and derive methods to update array
     const {ideas, saveNewIdea, updateIdea, deleteIdea, dateSort, changeOrder} = useIdeaState([], "LATEST");
@@ -14,8 +17,10 @@ const IdeaBoard = () => {
     return (
 
         <div>
+
             <NewIdea saveNewIdea={saveNewIdea}/>
             {
+                //when ideas present show saved ideas and select sort
                 ideas && ideas.length > 0 &&
                 <div data-testid="saved-ideas-container">
                     <h2>Saved Ideas</h2>

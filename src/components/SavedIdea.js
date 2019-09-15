@@ -3,6 +3,12 @@ import useEditMode from "./_customHooks_/useEditMode";
 import IdeaForm from "./IdeaForm";
 import PropTypes from "prop-types";
 
+/**
+ * SavedIdea component allows user to view exiting idea list and allows them to delete or edit the contents of saved idea
+ * @param idea
+ * @param updateIdea : function to update idea
+ * @param deleteIdea: function to delet idea
+ */
 const SavedIdea = ({idea, updateIdea, deleteIdea}) => {
     const {isEditing, enableEditing, disableEditing} = useEditMode(false);
 

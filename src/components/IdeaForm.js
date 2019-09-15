@@ -1,17 +1,21 @@
 import React, {useEffect, useRef} from "react";
-import useInputUpdate from "./_customHooks_/useInputUpdate";
 import PropTypes from "prop-types";
 
-
+/**
+ * IdeaForm is editbale form to add new or update saved idea
+ * @param idea
+ * @param saveIdea: function to save idea
+ * @param closeForm: function to cancel editing
+ */
 const IdeaForm = ({idea, saveIdea, closeForm}) => {
 
-    const title = useInputUpdate(idea ? idea.title : "");
-    const description = useInputUpdate(idea ? idea.description : "");
+    const title = idea ? idea.title : "";
+    const description = idea ? idea.description : "";
     const titleRef = useRef(null);
     const descriptionRef = useRef(null);
 
-
-    const addIdea = (event) => {
+    //on submit handler, gets current value of tile and description and calls save function to save it to ideas list
+    const saveChanges = (event) => {
         event.preventDefault();
         saveIdea(
             {
@@ -20,23 +24,21 @@ const IdeaForm = ({idea, saveIdea, closeForm}) => {
                 lastUpdate: new Date()
             }
         );
-
-        titleRef.current.value = "";
-        descriptionRef.current.value = "";
         closeForm();
 
     };
 
+    //on component mount focus input field
     useEffect(() => {
         titleRef.current.focus();
     }, []);
 
     return (
-        <form role="idea-form" onSubmit={addIdea}>
-            <input placeholder="Title" defaultValue={title.value} maxLength="30"
+        <form role="idea-form" onSubmit={saveChanges}>
+            <input placeholder="Title" defaultValue={title} maxLength="30"
                    ref={titleRef} required/>
             <textarea placeholder="Description"
-                      defaultValue={description.value} required
+                      defaultValue={description} required
                       ref={descriptionRef} maxLength="140"/>
             <button type="submit">Save</button>
             <button type="button" onClick={closeForm}>Cancel</button>
