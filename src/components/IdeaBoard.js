@@ -16,7 +16,7 @@ const IdeaBoard = () => {
 
     return (
 
-        <div>
+        <React.Fragment>
 
             <NewIdea saveNewIdea={saveNewIdea}/>
             {
@@ -41,7 +41,7 @@ const IdeaBoard = () => {
                     })}
                 </div>
             }
-        </div>
+        </React.Fragment>
 
     );
 };
