@@ -37,6 +37,7 @@ describe("IdeaForm renders idea details in form", () => {
         const input = document.querySelector("input");
         expect(input).toBeInTheDocument();
         expect(input).toHaveAttribute("placeholder", "Title");
+        expect(input).toHaveAttribute("maxlength", "30");
         expect(input).toHaveAttribute("required");
 
         const textarea = document.querySelector("textarea");

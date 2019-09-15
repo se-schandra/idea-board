@@ -10,6 +10,7 @@ header {
     text-transform: capitalize;
     padding: 20px;
     text-align: center;
+    line-height: 2em;
 }
 
 input, textarea {
@@ -29,6 +30,12 @@ em {
     margin: 5px 0 10px 0;
     font-size: 0.8em;
 }
+
+select + em {
+    display: inline;
+    margin-left: 10px;
+}
+
 
 summary {
     font-weight: 600;
@@ -70,8 +77,16 @@ section:last-child {
     border-bottom: none;
 }
 
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+}
 .container {
     padding: 20px;
     margin: 20px;
 }
 
+.saved-ideas-sort {
+    margin: 10px 0;
+    background-color: #E3F3E5;
+}

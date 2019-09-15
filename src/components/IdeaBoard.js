@@ -20,11 +20,13 @@ const IdeaBoard = () => {
                 <div data-testid="saved-ideas-container">
                     <h2>Saved Ideas</h2>
                     <hr/>
-                    <select data-testid="cta-sort-order" onChange={changeOrder} defaultValue={dateSort}>
-                        <option value="LATEST">Latest first</option>
-                        <option value="OLDEST">Oldest first</option>
-                    </select>
-                    <em>Showing {dateSort.toLowerCase()} first</em>
+                    <div className="saved-ideas-sort">
+                        <select data-testid="cta-sort-order" onChange={changeOrder} defaultValue={dateSort}>
+                            <option value="LATEST">Latest first</option>
+                            <option value="OLDEST">Oldest first</option>
+                        </select>
+                        <em>Showing {dateSort.toLowerCase()} first</em>
+                    </div>
                     {ideas.map((idea, index) => {
                         return <SavedIdea key={index}
                                           idea={idea}
